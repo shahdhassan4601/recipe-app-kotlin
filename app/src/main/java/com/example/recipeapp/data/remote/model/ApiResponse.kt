@@ -1,4 +1,5 @@
 package com.example.recipeapp.data.remote.model
 
-class ApiResponse {
-}
+data class ApiResponse(
+    val meals: List<Meal>?
+)
