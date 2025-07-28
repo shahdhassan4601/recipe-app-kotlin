@@ -2,4 +2,21 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Recipe App Colors -->
+    <color name="primary_orange">#FFA726</color>
+    <color name="orange_500">#F97316</color>
+    <color name="fresh_green">#66BB6A</color>
+    <color name="light_gray_border">#E0E0E0</color>
+    <color name="warm_white">#FFF8F2</color>
+    <color name="charcoal_gray">#333333</color>
+    <color name="tomato_red">#EF5350</color>
+    <color name="youtube_red">#FF0000</color>
+
+    <!-- System Colors -->
+    <color name="background">#FFFFFF</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="on_surface">#030213</color>
+    <color name="secondary_text">#717182</color>
+
 </resources>

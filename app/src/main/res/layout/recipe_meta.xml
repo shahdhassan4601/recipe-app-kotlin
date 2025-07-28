@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- Origin -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="4dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/pin"
+            app:tint="@color/orange_500"/>
+
+        <TextView
+            style="@style/RecipeApp.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/origin"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/recipeOrigin"
+            style="@style/RecipeApp.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Italian"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <!-- Category -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/fork_knife"
+            app:tint="@color/orange_500"/>
+
+        <TextView
+            style="@style/RecipeApp.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/category"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/recipeCategory"
+            style="@style/RecipeApp.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Main Course"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+</LinearLayout>

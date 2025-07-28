@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- Instructions Header -->
+    <LinearLayout
+        android:id="@+id/instructionsHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="16dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/instructionsIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/instructions"
+            android:src="@drawable/list_alt"
+            app:tint="@color/orange_500" />
+
+        <TextView
+            android:id="@+id/instructionsTitle"
+            style="@style/RecipeApp.Heading2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/instructions"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <!-- Instructions RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/instructionsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false"
+        tools:listitem="@layout/item_instruction" />
+
+</LinearLayout>
