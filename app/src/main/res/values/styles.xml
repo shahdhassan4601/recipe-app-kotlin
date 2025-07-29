@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="RecipeApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize as needed -->
+        <item name="colorPrimary">@color/primary_orange</item>
+        <item name="colorSecondary">@color/fresh_green</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+    <style name="RecipeApp.Heading1">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingMultiplier">1.5</item>
+    </style>
+
+    <style name="RecipeApp.Heading2">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="RecipeApp.Body">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingMultiplier">1.5</item>
+    </style>
+</resources>
