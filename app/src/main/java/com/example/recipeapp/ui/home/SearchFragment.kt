@@ -44,8 +44,7 @@ class SearchFragment : Fragment() {
         val searchProgressBar: ProgressBar = view.findViewById(R.id.searchProgressBar)
 
         searchAdapter = RecipeSearchAdapter(emptyList()) { meal ->
-            val action = SearchFragmentDirections.actionSearchFragmentToRecipeDetailFragment(meal.idMeal)
-            findNavController().navigate(action)
+
         }
         searchResultsRecyclerView.layoutManager = LinearLayoutManager(context)
         searchResultsRecyclerView.adapter = searchAdapter

@@ -58,4 +58,17 @@
             app:argType="string" />
     </fragment>
 
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.recipeapp.ui.favorites.FavoriteFragment"
+        android:label="Favorites">
+
+        <!-- Action from FavoriteFragment to RecipeDetailFragment -->
+        <action
+            android:id="@+id/action_favorite_to_recipeDetail"
+            app:destination="@id/recipeDetailFragment" />
+    </fragment>
+
+
+
 </navigation>

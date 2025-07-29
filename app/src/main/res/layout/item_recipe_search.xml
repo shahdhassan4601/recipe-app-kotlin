@@ -41,7 +41,7 @@
             android:id="@+id/favoriteIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_favorite_border"
+            android:src="@drawable/ic_favorite"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/recipeNameTextView"
             app:tint="@color/icon_tint" />
