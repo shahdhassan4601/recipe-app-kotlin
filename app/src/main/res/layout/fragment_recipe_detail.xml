@@ -118,13 +118,24 @@
             android:textSize="16sp" />
 
         <!-- Recipe Meta (Origin, Category) -->
-        <include layout="@layout/recipe_meta" />
+        <include
+            android:id="@+id/recipeMeta"
+            layout="@layout/recipe_meta" />
 
         <!-- Ingredients Section -->
-        <include layout="@layout/ingredients_section" />
+        <include
+            android:id="@+id/ingredientsSection"
+            layout="@layout/ingredients_section" />
 
         <!-- Instructions Section -->
-        <include layout="@layout/instructions_section" />
+        <include
+            android:id="@+id/instructionsSection"
+            layout="@layout/instructions_section" />
+
+        <include
+            layout="@layout/video_overlay"
+            android:id="@+id/video_overlay_include"/>
+
 
     </LinearLayout>
 </ScrollView>

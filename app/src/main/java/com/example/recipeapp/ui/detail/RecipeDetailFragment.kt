@@ -1,60 +1,132 @@
 package com.example.recipeapp.ui.detail
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipeapp.R
+import com.example.recipeapp.databinding.FragmentRecipeDetailBinding
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerCallback
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [RecipeDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class RecipeDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private var _binding :FragmentRecipeDetailBinding? = null
+    private val binding get() = _binding!!
+
+    private lateinit var ingredientsAdapter: IngredientsAdapter
+    private lateinit var instructionsAdapter: InstructionsAdapter
+
+    private lateinit var youtubePlayerView: YouTubePlayerView
+
+    //private var recipe: Recipe? = null
+
+    private var isIngredientsExpanded = false
+    private var isInstructionsExpanded = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recipe_detail, container, false)
+    ): View {
+        _binding = FragmentRecipeDetailBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RecipeDetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RecipeDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        youtubePlayerView = binding.videoOverlayInclude.youtubePlayerView
+        lifecycle.addObserver(youtubePlayerView)
+
+        setupViews()
+        setupCollapsibleSections()
+        setupRecyclerViews()
+        populateData()
     }
+
+    // 1. setting up buttons
+    private fun setupViews(){
+        binding.backButton.setOnClickListener{
+            //nav to home
+        }
+
+        binding.favoriteButton.setOnClickListener{
+            //selectFavIcon()
+            //add to favorites
+        }
+
+        binding.watchVideoButton.setOnClickListener {
+            val videoUrl = "https://www.youtube.com/watch?v=XXXX" // replace with MealDB value
+            val videoId = extractYoutubeVideoId(videoUrl)
+            playVideo(videoId)
+        }
+    }
+
+    // 2. setting up collapsible sections(ingredients - instructions)
+    private fun setupCollapsibleSections() {
+
+    }
+
+    //3. setting up recycler view
+    private fun setupRecyclerViews() {
+        //ingredients
+        var ingredientslist: List<Ingredient> = listOf() //will be fetched
+        ingredientsAdapter = IngredientsAdapter(ingredientslist)
+        binding.ingredientsSection.ingredientsRecyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = ingredientsAdapter
+            isNestedScrollingEnabled = false
+        }
+
+        //instructions
+        var instructionslist: List<InstructionStep> = listOf() //will be fetched
+        instructionsAdapter = InstructionsAdapter(instructionslist)
+        binding.instructionsSection.instructionsRecyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = instructionsAdapter
+            isNestedScrollingEnabled = false
+        }
+    }
+
+    //4. fetch data from api
+    private fun populateData(){
+
+
+    }
+
+    private fun playVideo(videoId: String) {
+        binding.videoOverlayInclude.videoOverlay.visibility = View.VISIBLE
+
+        youtubePlayerView.getYouTubePlayerWhenReady(object : YouTubePlayerCallback {
+            override fun onYouTubePlayer(youTubePlayer: YouTubePlayer) {
+                youTubePlayer.loadVideo(videoId, 0f)
+            }
+        })
+
+
+        binding.videoOverlayInclude.btnCloseVideo.setOnClickListener {
+            binding.videoOverlayInclude.videoOverlay.visibility = View.GONE
+            youtubePlayerView.release()
+        }
+    }
+
+    private fun extractYoutubeVideoId(url: String): String {
+        return Uri.parse(url).getQueryParameter("v") ?: ""
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        youtubePlayerView.release()
+        _binding = null
+    }
+
 }
