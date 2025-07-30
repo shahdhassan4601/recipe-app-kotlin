@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="tRecipeApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize as needed -->
+        <item name="colorPrimary">@color/primary_orange</item>
+        <item name="colorSecondary">@color/fresh_green</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
     <style name="ChipStyle">
         <item name="android:layout_marginEnd">8dp</item>
         <item name="android:background">@drawable/chip_background</item>
