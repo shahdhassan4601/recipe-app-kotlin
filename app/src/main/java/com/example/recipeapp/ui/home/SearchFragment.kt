@@ -74,5 +74,6 @@ class SearchFragment : Fragment() {
             viewModel.searchRecipes("Dinner")
         }
 
+
     }
 }

@@ -2,27 +2,35 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recipeCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="12dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp"
     app:cardBackgroundColor="@color/card_background"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="6dp">
+    app:strokeColor="@android:color/transparent"
+    android:foreground="?attr/selectableItemBackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="12dp">
 
+        <!-- Recipe Image -->
         <ImageView
             android:id="@+id/recipeImageView"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
-            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/image_rounded_shadow"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             tools:src="@tools:sample/avatars" />
 
+
+
+        <!-- Recipe Name -->
         <TextView
             android:id="@+id/recipeNameTextView"
             android:layout_width="0dp"
@@ -32,47 +40,40 @@
             android:textColor="@color/primaryTextColor"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/favoriteIcon"
-            app:layout_constraintStart_toEndOf="@+id/recipeImageView"
             app:layout_constraintTop_toTopOf="@+id/recipeImageView"
+            app:layout_constraintStart_toEndOf="@+id/recipeImageView"
+
             tools:text="Creamy Chicken Alfredo Pasta" />
 
-        <ImageView
-            android:id="@+id/favoriteIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_favorite"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/recipeNameTextView"
-            app:tint="@color/icon_tint" />
-
+        <!-- Recipe Description -->
         <TextView
             android:id="@+id/recipeDescriptionTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
             android:layout_marginTop="4dp"
+            android:layout_marginStart="12dp"
             android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="2"
             android:textColor="@color/secondaryTextColor"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/recipeImageView"
             app:layout_constraintTop_toBottomOf="@+id/recipeNameTextView"
-            tools:text="Rich and creamy pasta dish with tender chicken breast, fresh parmesan, and..." />
+            app:layout_constraintStart_toEndOf="@+id/recipeImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="A delightful creamy pasta with chicken." />
 
+        <!-- Time + Rating + Difficulty -->
         <LinearLayout
             android:id="@+id/infoLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
+            android:layout_marginStart="12dp"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recipeDescriptionTextView"
             app:layout_constraintStart_toEndOf="@+id/recipeImageView"
-            app:layout_constraintTop_toBottomOf="@+id/recipeDescriptionTextView">
+            app:layout_constraintEnd_toEndOf="parent">
 
             <ImageView
                 android:layout_width="18dp"

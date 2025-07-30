@@ -1,6 +1,7 @@
 package com.example.recipeapp.data.remote.api
 
 import com.example.recipeapp.data.remote.model.ApiResponse
+
 import com.example.recipeapp.data.remote.model.DetailApiResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -16,4 +17,8 @@ interface MealApiService {
 
     @GET("api/json/v1/1/lookup.php")
     suspend fun getRecipeDetails(@Query("i") recipeId: String): Response<DetailApiResponse>
+
+    @GET("filter.php")
+    suspend fun getMealsByCategory(@Query("c") category: String): ApiResponse
+
 }

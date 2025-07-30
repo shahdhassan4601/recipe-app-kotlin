@@ -37,6 +37,7 @@
     <color name="error">#F44336</color>
     <color name="warning">#FF9800</color>
 
+    <color name="cremay">#F2EADF</color>
     <!-- Gradient Colors -->
     <color name="gradient_end">#DC2626</color>
     <!-- Primary colors -->
@@ -59,4 +60,9 @@
     <color name="icon_tint">#757575</color> <!-- Grey for icons -->
     <color name="orange_accent">#FF6F00</color> <!-- The orange accent color -->
     <color name="yellow_accent">#FFD740</color> <!-- The yellow accent color -->
+
+
+    <color name="light_orange_overlay">#FFFFF3E0</color> <!-- أورانج خفيف جدًا -->
+    <color name="ripple_orange">#33FFA726</color> <!-- برتقالي شفاف -->
+
 </resources>
