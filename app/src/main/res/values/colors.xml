@@ -4,11 +4,28 @@
     <color name="primary_orange">#FFA726</color>
     <color name="orange_500">#F97316</color>
     <color name="fresh_green">#66BB6A</color>
+    <!-- Recipe App Colors from your Figma design -->
+    <color name="PrimaryOrange">#FFA726</color>
+    <color name="Orange500">#F97316</color>
+    <color name="fresh_green">#66BB6A</color>
+    <color name="light_gray_borders">#E0E0E0</color>
+    <color name="warm_white_background">#FFF8F2</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Recipe App Colors -->
+    <color name="primary_orange">#FFA726</color>
+    <color name="orange_500">#F97316</color>
     <color name="light_gray_border">#E0E0E0</color>
     <color name="warm_white">#FFF8F2</color>
     <color name="charcoal_gray">#333333</color>
     <color name="tomato_red">#EF5350</color>
     <color name="youtube_red">#FF0000</color>
+
+    <!-- Additional UI Colors -->
+    <color name="search_background">#F5F5F5</color>
+    <color name="card_shadow">#1A000000</color>
+    <color name="overlay_background">#80000000</color>
 
     <!-- System Colors -->
     <color name="background">#FFFFFF</color>
@@ -17,4 +34,32 @@
     <color name="secondary_text">#717182</color>
     <color name="transparent">#00000000</color>
 
+
+    <!-- Status Colors -->
+    <color name="success">#4CAF50</color>
+    <color name="error">#F44336</color>
+    <color name="warning">#FF9800</color>
+
+    <!-- Gradient Colors -->
+    <color name="gradient_end">#DC2626</color>
+    <!-- Primary colors -->
+    <color name="primaryColor">#FF6F00</color> <!-- A vibrant orange for primary elements -->
+    <color name="primaryLightColor">#FFA040</color>
+    <color name="primaryDarkColor">#C43E00</color>
+
+    <!-- Secondary colors -->
+    <color name="secondaryColor">#FFD740</color> <!-- A warm yellow for secondary elements -->
+    <color name="secondaryLightColor">#FFFF73</color>
+    <color name="secondaryDarkColor">#C7A600</color>
+
+    <!-- Text colors -->
+    <color name="primaryTextColor">#212121</color> <!-- Dark grey for most text -->
+    <color name="secondaryTextColor">#757575</color> <!-- Medium grey for secondary text -->
+
+    <!-- Custom colors from your design -->
+    <color name="background_light">#F5F5F5</color> <!-- Light grey background -->
+    <color name="card_background">#FFFFFF</color> <!-- White for card backgrounds -->
+    <color name="icon_tint">#757575</color> <!-- Grey for icons -->
+    <color name="orange_accent">#FF6F00</color> <!-- The orange accent color -->
+    <color name="yellow_accent">#FFD740</color> <!-- The yellow accent color -->
 </resources>

@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt") // for Room or Glide annotation processing
+    // Apply the Safe Args plugin for Kotlin projects
+    id("androidx.navigation.safeargs.kotlin") // For Kotlin projects
 }
 
 android {
@@ -49,6 +51,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation("androidx.recyclerview:recyclerview:1.3.1")
 
     // Navigation Component
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
