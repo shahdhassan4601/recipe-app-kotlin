@@ -1,4 +1,7 @@
 package com.example.recipeapp.data.remote.model
 
-class Meal {
-}
+data class Meal(
+    val idMeal: String,
+    val strMeal: String,
+    val strMealThumb: String
+)
