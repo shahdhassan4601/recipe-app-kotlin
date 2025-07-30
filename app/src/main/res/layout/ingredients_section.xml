@@ -11,28 +11,38 @@
         android:id="@+id/ingredientsHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:padding="16dp"
         android:orientation="horizontal"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:paddingTop="16dp"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:focusable="true">
 
         <ImageView
-            android:id="@+id/ingredientsIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginEnd="8dp"
-            android:contentDescription="@string/ingredients_icon"
             android:src="@drawable/import_contacts"
+            android:contentDescription="@string/ingredients_icon"
             app:tint="@color/orange_500" />
 
         <TextView
             android:id="@+id/ingredientsTitle"
-            style="@style/RecipeApp.Heading2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
             android:text="@string/ingredients"
+            android:textAppearance="@style/RecipeApp.Heading2"
             android:textColor="@color/black" />
+
+        <!-- Chevron Icon -->
+        <ImageView
+            android:id="@+id/ingredientsToggleIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/chevron_up"
+            app:tint="@color/black" />
+
     </LinearLayout>
 
     <!-- Ingredients RecyclerView -->
@@ -41,7 +51,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:nestedScrollingEnabled="false"
-        android:padding="14dp"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="20dp"
         tools:listitem="@layout/ingredient_item" />
 
 </LinearLayout>

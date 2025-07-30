@@ -42,7 +42,8 @@ class HomeFragment : Fragment( ) {
 
         // Set up RecyclerView with GridLayoutManager for a more modern look
         recipeAdapter = RecipeAdapter(emptyList()) { meal ->
-
+            val action = HomeFragmentDirections.actionHomeFragmentToRecipeDetailFragment(meal.idMeal)
+            findNavController().navigate(action)
         }
         recyclerView.layoutManager = GridLayoutManager(context, 2) // 2 columns
         recyclerView.adapter = recipeAdapter

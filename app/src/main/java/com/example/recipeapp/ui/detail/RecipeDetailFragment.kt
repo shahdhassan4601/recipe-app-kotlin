@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -55,9 +56,11 @@ class RecipeDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         youtubePlayerView = binding.videoOverlayInclude.youtubePlayerView
         lifecycle.addObserver(youtubePlayerView)
 
+        // Setup logic
         val repository = RepositoryProvider.provideRecipeRepository()
         val factory = DetailViewModelFactory(repository)
         viewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
@@ -94,8 +97,55 @@ class RecipeDetailFragment : Fragment() {
 
     // 2. setting up collapsible sections(ingredients - instructions)
     private fun setupCollapsibleSections() {
+        binding.ingredientsSection.ingredientsRecyclerView.visibility = View.GONE
+        binding.instructionsSection.instructionsRecyclerView.visibility = View.GONE
 
+        binding.ingredientsSection.ingredientsToggleIcon.setImageResource(R.drawable.chevron_down)
+        binding.instructionsSection.instructionsToggleIcon.setImageResource(R.drawable.chevron_down)
+
+        isIngredientsExpanded = false
+        isInstructionsExpanded = false
+
+        // Ingredients toggle logic
+        binding.ingredientsSection.ingredientsHeader.setOnClickListener {
+            isIngredientsExpanded = !isIngredientsExpanded
+
+            toggleVisibilityWithAnimation(
+                binding.ingredientsSection.ingredientsRecyclerView,
+                isIngredientsExpanded
+            )
+
+            binding.ingredientsSection.ingredientsToggleIcon.setImageResource(
+                if (isIngredientsExpanded) R.drawable.chevron_up else R.drawable.chevron_down
+            )
+        }
+
+        // Instructions toggle logic
+        binding.instructionsSection.instructionsHeader.setOnClickListener {
+            isInstructionsExpanded = !isInstructionsExpanded
+
+            toggleVisibilityWithAnimation(
+                binding.instructionsSection.instructionsRecyclerView,
+                isInstructionsExpanded
+            )
+
+            binding.instructionsSection.instructionsToggleIcon.setImageResource(
+                if (isInstructionsExpanded) R.drawable.chevron_up else R.drawable.chevron_down
+            )
+        }
     }
+
+    fun toggleVisibilityWithAnimation(view: View, expand: Boolean) {
+        val animation = if (expand) {
+            AlphaAnimation(0f, 1f)
+        } else {
+            AlphaAnimation(1f, 0f)
+        }
+        animation.duration = 300
+        view.startAnimation(animation)
+        view.visibility = if (expand) View.VISIBLE else View.GONE
+    }
+
 
     //3. setting up recycler view
     private fun setupRecyclerViews() {
@@ -127,7 +177,6 @@ class RecipeDetailFragment : Fragment() {
                 binding.recipeTitle.text = meal.strMeal
                 binding.recipeMeta.recipeCategory.text = meal.strCategory ?: ""
                 binding.recipeMeta.recipeOrigin.text = meal.strArea ?: ""
-                binding.recipeDescription.text = meal.strInstructions ?: ""
 
                 Glide.with(this)
                     .load(meal.strMealThumb)
@@ -154,9 +203,18 @@ class RecipeDetailFragment : Fragment() {
 
     private fun extractIngredients(meal: DetailedMeal): List<Ingredient> {
         val ingredients = mutableListOf<Ingredient>()
+
         for (i in 1..20) {
-            val ingredient = meal::class.java.getDeclaredField("strIngredient$i").get(meal) as? String
-            val measure = meal::class.java.getDeclaredField("strMeasure$i").get(meal) as? String
+            val ingredientField = meal::class.java.getDeclaredField("strIngredient$i").apply {
+                isAccessible = true
+            }
+            val measureField = meal::class.java.getDeclaredField("strMeasure$i").apply {
+                isAccessible = true
+            }
+
+            val ingredient = ingredientField.get(meal) as? String
+            val measure = measureField.get(meal) as? String
+
             if (!ingredient.isNullOrBlank() && ingredient != "null") {
                 ingredients.add(Ingredient(ingredient.trim(), measure?.trim() ?: ""))
             }
@@ -164,9 +222,10 @@ class RecipeDetailFragment : Fragment() {
         return ingredients
     }
 
+
     private fun extractInstructions(instructions: String?): List<InstructionStep> {
         return instructions
-            ?.split(Regex("\\r?\\n")) // Split by \r\n or \n
+            ?.split(Regex("[\\r\\n]+|(?<!\\b(?:e\\.g|i\\.e|Dr|Mr|Mrs|vs|etc))\\.(\\s+|$)"))
             ?.mapNotNull { line ->
                 val trimmed = line.trim()
                 if (trimmed.isNotEmpty()) InstructionStep(trimmed) else null

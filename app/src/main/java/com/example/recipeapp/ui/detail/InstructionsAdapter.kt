@@ -23,7 +23,7 @@ class InstructionsAdapter(private var steps: List<InstructionStep>) :
 
     override fun onBindViewHolder(holder: InstructionViewHolder, position: Int) {
         val step = steps[position]
-        holder.tvStepNumber.text = "${position + 1}."
+        holder.tvStepNumber.text = "${position + 1}"
         holder.tvInstructionText.text = step.step.trim()
     }
 
