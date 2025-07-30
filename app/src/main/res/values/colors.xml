@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Recipe App Colors -->
+    <color name="primary_orange">#FFA726</color>
+    <color name="orange_500">#F97316</color>
+    <color name="fresh_green">#66BB6A</color>
     <!-- Recipe App Colors from your Figma design -->
     <color name="PrimaryOrange">#FFA726</color>
     <color name="Orange500">#F97316</color>
@@ -28,6 +32,8 @@
     <color name="surface">#FFFFFF</color>
     <color name="on_surface">#030213</color>
     <color name="secondary_text">#717182</color>
+    <color name="transparent">#00000000</color>
+
 
     <!-- Status Colors -->
     <color name="success">#4CAF50</color>
