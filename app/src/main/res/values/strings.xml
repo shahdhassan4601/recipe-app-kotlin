@@ -2,4 +2,14 @@
     <string name="app_name">RecipeApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="back">Back</string>
+    <string name="favorite">Favorite</string>
+    <string name="watch_video">Watch Video</string>
+    <string name="recipe_image">Recipe image</string>
+    <string name="origin">Origin:</string>
+    <string name="category">Category:</string>
+    <string name="ingredients_icon">ingredients</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="instructions">Instructions</string>
+    <string name="recipe_title">Recipe title</string>
 </resources>
