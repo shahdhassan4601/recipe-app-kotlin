@@ -49,8 +49,6 @@
     <!-- Text colors -->
     <color name="primaryTextColor">#212121</color> <!-- Dark grey for most text -->
     <color name="secondaryTextColor">#757575</color> <!-- Medium grey for secondary text -->
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
 
     <!-- Custom colors from your design -->
     <color name="background_light">#F5F5F5</color> <!-- Light grey background -->

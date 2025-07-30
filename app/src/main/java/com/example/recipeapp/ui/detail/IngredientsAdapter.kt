@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipeapp.R
 
-class IngredientsAdapter(private val ingredients: List<Ingredient>):
+class IngredientsAdapter(private var ingredients: List<Ingredient>):
     RecyclerView.Adapter<IngredientsAdapter.IngredientViewHolder>() {
 
     inner class IngredientViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -28,6 +28,10 @@ class IngredientsAdapter(private val ingredients: List<Ingredient>):
         holder.tvIngredient.text = item.name
     }
 
-    override fun getItemCount(): Int = ingredients.size
+    fun updateList(newList: List<Ingredient>) {
+        this.ingredients = newList
+        notifyDataSetChanged()
+    }
 
+    override fun getItemCount(): Int = ingredients.size
 }
