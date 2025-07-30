@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt") // for Room or Glide annotation processing
+    // Apply the Safe Args plugin for Kotlin projects
+    id("androidx.navigation.safeargs.kotlin") // For Kotlin projects
 }
 
 android {
