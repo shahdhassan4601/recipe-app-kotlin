@@ -65,13 +65,13 @@ class RecipeDetailFragment : Fragment() {
         val factory = DetailViewModelFactory(repository)
         viewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
 
-        val recipeId = args.recipeId
-        viewModel.fetchMealDetail(recipeId)
-        observeViewModel()
-
         setupViews()
         setupCollapsibleSections()
         setupRecyclerViews()
+
+        val recipeId = args.recipeId
+        viewModel.fetchMealDetail(recipeId)
+        observeViewModel()
     }
 
     // 1. setting up buttons

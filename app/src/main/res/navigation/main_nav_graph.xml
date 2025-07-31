@@ -71,23 +71,23 @@
             android:id="@+id/action_favorite_to_recipeDetail"
             app:destination="@id/recipeDetailFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/detailFragment"
-        android:name="com.example.recipeapp.ui.detail.RecipeDetailFragment"
-        android:label="Recipe Detail">
-        <argument
-            android:name="mealId"
-            app:argType="string" />
-    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/detailFragment"-->
+<!--        android:name="com.example.recipeapp.ui.detail.RecipeDetailFragment"-->
+<!--        android:label="Recipe Detail">-->
+<!--        <argument-->
+<!--            android:name="mealId"-->
+<!--            app:argType="string" />-->
+<!--    </fragment>-->
 
     <!-- Action من HomeFragment لـ DetailFragment -->
-    <action
-        android:id="@+id/action_homeFragment_to_detailFragment"
-        app:destination="@id/detailFragment"
-        app:enterAnim="@anim/slide_in_right"
-        app:exitAnim="@anim/slide_out_left"
-        app:popEnterAnim="@anim/slide_in_left"
-        app:popExitAnim="@anim/slide_out_right" />
+<!--    <action-->
+<!--        android:id="@+id/action_homeFragment_to_detailFragment"-->
+<!--        app:destination="@id/detailFragment"-->
+<!--        app:enterAnim="@anim/slide_in_right"-->
+<!--        app:exitAnim="@anim/slide_out_left"-->
+<!--        app:popEnterAnim="@anim/slide_in_left"-->
+<!--        app:popExitAnim="@anim/slide_out_right" />-->
 
 
 

@@ -5,122 +5,116 @@
     android:id="@+id/recipeCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="8dp"
-    app:cardBackgroundColor="@color/card_background"
+    android:layout_marginVertical="8dp"
+    android:layout_marginHorizontal="4dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
     app:strokeColor="@android:color/transparent"
-    android:foreground="?attr/selectableItemBackground">
+    app:cardBackgroundColor="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="12dp">
 
-        <!-- Recipe Image -->
+        <!-- صورة الوصفة -->
         <ImageView
             android:id="@+id/recipeImageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:scaleType="centerCrop"
+            android:contentDescription="@string/recipe_image"
             android:background="@drawable/image_rounded_shadow"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:src="@tools:sample/avatars" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/recipeNameTextView" />
 
-
-
-        <!-- Recipe Name -->
+        <!-- اسم الوصفة -->
         <TextView
             android:id="@+id/recipeNameTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="8dp"
-            android:textColor="@color/primaryTextColor"
+            android:text="Creamy Chicken Alfredo"
+            android:textColor="@color/charcoal_gray"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="@+id/recipeImageView"
-            app:layout_constraintStart_toEndOf="@+id/recipeImageView"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintStart_toEndOf="@id/recipeImageView"
+            app:layout_constraintTop_toTopOf="@id/recipeImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="12dp" />
 
-            tools:text="Creamy Chicken Alfredo Pasta" />
-
-        <!-- Recipe Description -->
+        <!-- الوصف المختصر -->
         <TextView
             android:id="@+id/recipeDescriptionTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="8dp"
-            android:ellipsize="end"
-            android:maxLines="2"
+            android:text="A simple and quick pasta with creamy sauce."
             android:textColor="@color/secondaryTextColor"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@+id/recipeNameTextView"
-            app:layout_constraintStart_toEndOf="@+id/recipeImageView"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintStart_toStartOf="@id/recipeNameTextView"
+            app:layout_constraintTop_toBottomOf="@id/recipeNameTextView"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="A delightful creamy pasta with chicken." />
+            android:layout_marginTop="4dp" />
 
-        <!-- Time + Rating + Difficulty -->
+        <!-- معلومات إضافية (مدة - تقييم - صعوبة) -->
         <LinearLayout
             android:id="@+id/infoLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="12dp"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            app:layout_constraintTop_toBottomOf="@+id/recipeDescriptionTextView"
-            app:layout_constraintStart_toEndOf="@+id/recipeImageView"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/recipeDescriptionTextView"
+            app:layout_constraintStart_toStartOf="@id/recipeDescriptionTextView"
+            app:layout_constraintEnd_toEndOf="@id/recipeDescriptionTextView"
+            android:layout_marginTop="8dp">
 
             <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:src="@drawable/ic_time"
                 app:tint="@color/icon_tint" />
-
             <TextView
                 android:id="@+id/timeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="30 min"
                 android:layout_marginStart="4dp"
-                android:textColor="@color/secondaryTextColor"
                 android:textSize="12sp"
-                tools:text="25 min" />
+                android:textColor="@color/secondaryTextColor" />
 
             <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginStart="12dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:src="@drawable/ic_star"
+                android:layout_marginStart="12dp"
                 app:tint="@color/yellow_accent" />
-
             <TextView
                 android:id="@+id/ratingTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="4.6"
                 android:layout_marginStart="4dp"
-                android:textColor="@color/secondaryTextColor"
                 android:textSize="12sp"
-                tools:text="4.8" />
+                android:textColor="@color/secondaryTextColor" />
 
             <TextView
                 android:id="@+id/difficultyTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:background="@drawable/difficulty_background_easy"
-                android:paddingStart="8dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="8dp"
-                android:paddingBottom="4dp"
-                android:textColor="@color/white"
+                android:text="Easy"
                 android:textSize="12sp"
-                tools:text="Easy" />
-
+                android:textColor="@color/white"
+                android:background="@drawable/difficulty_background_easy"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </com.google.android.material.card.MaterialCardView>

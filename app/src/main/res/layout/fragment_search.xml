@@ -93,32 +93,44 @@
                             android:layout_marginEnd="12dp"
                             android:text="All" />
 
-                        <Button
-                            android:id="@+id/btnBreakfast"
-                            style="@style/CategoryButtonStyle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="12dp"
-                            android:text="Breakfast" />
 
                         <Button
-                            android:id="@+id/btnLunch"
+                            android:id="@+id/btnBeef"
                             style="@style/CategoryButtonStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="12dp"
-                            android:text="Lunch" />
+                            android:text="Beef" />
 
                         <Button
-                            android:id="@+id/btnDinner"
+                            android:id="@+id/btnChicken"
                             style="@style/CategoryButtonStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="12dp"
-                            android:text="Dinner" />
+                            android:text="Chicken" />
+
+                        <Button
+                            android:id="@+id/btnSeafood"
+                            style="@style/CategoryButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="12dp"
+                            android:text="Seafood" />
+
+
+
+                        <Button
+                            android:id="@+id/btnVegan"
+                            style="@style/CategoryButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="12dp"
+                            android:text="Vegan" />
 
                     </LinearLayout>
                 </HorizontalScrollView>
+
 
                 <!-- عنوان البحث الحديث -->
                 <TextView

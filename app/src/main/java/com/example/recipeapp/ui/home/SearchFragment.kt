@@ -7,9 +7,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
+import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -18,17 +20,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipeapp.R
 import com.example.recipeapp.data.remote.api.RetrofitClient
-import com.example.recipeapp.ui.home.RecipeAdapter
 
 class SearchFragment : Fragment() {
 
     private lateinit var viewModel: SearchViewModel
     private lateinit var searchAdapter: RecipeSearchAdapter
+    private lateinit var categoryButtons: List<Button>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
@@ -44,8 +46,10 @@ class SearchFragment : Fragment() {
         val searchProgressBar: ProgressBar = view.findViewById(R.id.searchProgressBar)
 
         searchAdapter = RecipeSearchAdapter(emptyList()) { meal ->
-
+            val action = SearchFragmentDirections.actionSearchFragmentToRecipeDetailFragment(meal.idMeal ?: "")
+            findNavController().navigate(action)
         }
+
         searchResultsRecyclerView.layoutManager = LinearLayoutManager(context)
         searchResultsRecyclerView.adapter = searchAdapter
 
@@ -58,22 +62,59 @@ class SearchFragment : Fragment() {
         }
 
         searchEditText.addTextChangedListener { text ->
-            if (text.toString().isNotEmpty()) {
-                viewModel.searchRecipes(text.toString())
+            viewModel.searchRecipes(text.toString())
+        }
+
+        val btnAll = view.findViewById<Button>(R.id.btnAll)
+        val btnBeef = view.findViewById<Button>(R.id.btnBeef)
+        val btnChicken = view.findViewById<Button>(R.id.btnChicken)
+        val btnSeafood = view.findViewById<Button>(R.id.btnSeafood)
+
+        val btnVegan = view.findViewById<Button>(R.id.btnVegan)
+
+        categoryButtons = listOf(btnAll, btnBeef, btnChicken, btnSeafood, btnVegan)
+
+        fun highlightSelectedButton(selectedButton: Button) {
+            categoryButtons.forEach { button ->
+                if (button == selectedButton) {
+                    button.setBackgroundResource(R.drawable.category_button_selected)
+                    button.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                } else {
+                    button.setBackgroundResource(R.drawable.category_button_unselected)
+                    button.setTextColor(ContextCompat.getColor(requireContext(), R.color.primaryColor))
+                }
             }
         }
 
-        // Implement category button click listeners to filter search results
-        view.findViewById<Button>(R.id.btnBreakfast).setOnClickListener {
-            viewModel.searchRecipes("Breakfast")
-        }
-        view.findViewById<Button>(R.id.btnLunch).setOnClickListener {
-            viewModel.searchRecipes("Lunch")
-        }
-        view.findViewById<Button>(R.id.btnDinner).setOnClickListener {
-            viewModel.searchRecipes("Dinner")
+        fun setupCategoryButton(button: Button, category: String?) {
+            button.setOnClickListener {
+                animateButton(button)
+                highlightSelectedButton(button)
+                if (category.isNullOrEmpty()) {
+                    viewModel.searchRecipes("")
+                } else {
+                    viewModel.searchRecipes(category)
+                }
+            }
         }
 
+        setupCategoryButton(btnAll, "")
+        setupCategoryButton(btnBeef, "Beef")
+        setupCategoryButton(btnChicken, "Chicken")
+        setupCategoryButton(btnSeafood, "Seafood")
+        setupCategoryButton(btnVegan, "Vegan")
+    }
 
+    private fun animateButton(button: View) {
+        button.animate()
+            .scaleX(0.95f)
+            .scaleY(0.95f)
+            .setDuration(100)
+            .withEndAction {
+                button.animate()
+                    .scaleX(1f)
+                    .scaleY(1f)
+                    .duration = 100
+            }
     }
 }
