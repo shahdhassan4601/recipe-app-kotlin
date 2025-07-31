@@ -64,5 +64,8 @@
 
     <color name="light_orange_overlay">#FFFFF3E0</color> <!-- أورانج خفيف جدًا -->
     <color name="ripple_orange">#33FFA726</color> <!-- برتقالي شفاف -->
+    <color name="category_button_text_color">#FF6F00</color>
+    <color name="category_button_background">#FFF8F2</color>
+    <color name="category_button_stroke_color">#FF6F00</color>
 
 </resources>

@@ -86,16 +86,7 @@
         app:popEnterAnim="@anim/slide_in_left"
         app:popExitAnim="@anim/slide_out_right" />
 
-    <fragment
-        android:id="@+id/categoryRecipesFragment"
-        android:name="com.example.recipeapp.ui.home.CategoryRecipesFragment"
-        android:label="Category Recipes"
-        tools:layout="@layout/fragment_category_recipes">
 
-        <argument
-            android:name="categoryName"
-            app:argType="string" />
-    </fragment>
 
 
 </navigation>

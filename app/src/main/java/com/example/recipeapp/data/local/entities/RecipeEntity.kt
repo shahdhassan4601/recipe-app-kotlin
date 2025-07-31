@@ -18,6 +18,7 @@ data class RecipeEntity(
     // Store ingredients as JSON - completely dynamic, any number
     val ingredientsJson: String, // JSON array of Ingredient objects
     val dateAdded: Long = System.currentTimeMillis()
+
 )
 
 // Helper data class for ingredients with measure (quantity)
