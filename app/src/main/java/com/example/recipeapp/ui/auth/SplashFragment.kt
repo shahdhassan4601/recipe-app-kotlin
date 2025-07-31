@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.airbnb.lottie.LottieAnimationView
 import com.example.recipeapp.databinding.FragmentSplashBinding
-import com.example.recipeapp.data.prefs.SharedPrefsHelper
 import com.example.recipeapp.ui.main.RecipeActivity
 import com.example.recipeapp.R
 import androidx.navigation.fragment.findNavController
@@ -33,18 +32,14 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.splashLottie.setAnimation(R.raw.splash_lottie)
-        binding.splashLottie.playAnimation()
         animateProgressBarAndNavigate()
     }
 
     private fun animateProgressBarAndNavigate() {
         lifecycleScope.launch {
-            // Start Lottie animation manually (optional)
-
-            for (i in 0..100) {
-                binding.loadingBar.progress = i+10
-                delay(20) // total of ~2 seconds
+            for (i in 0..100 step 2) { // step by 5 for faster updates
+                binding.loadingBar.progress = i
+                delay(20) // shorter delay
             }
 
             // Optionally pause or cancel the Lottie after progress finishes

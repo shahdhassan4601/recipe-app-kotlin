@@ -101,20 +101,9 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <!-- Recipe Description -->
-        <TextView
-            android:id="@+id/recipeDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:lineSpacingExtra="4dp"
-            android:paddingStart="16dp"
-            android:paddingTop="8dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="16dp"
-            android:text="Recipe description"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+        <include
+            layout="@layout/video_overlay"
+            android:id="@+id/video_overlay_include"/>
 
         <!-- Recipe Meta (Origin, Category) -->
         <include
@@ -130,11 +119,6 @@
         <include
             android:id="@+id/instructionsSection"
             layout="@layout/instructions_section" />
-
-        <include
-            layout="@layout/video_overlay"
-            android:id="@+id/video_overlay_include"/>
-
 
     </LinearLayout>
 </ScrollView>

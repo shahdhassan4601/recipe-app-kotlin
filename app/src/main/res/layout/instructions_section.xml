@@ -12,11 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:paddingTop="16dp"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
 
+        <!-- Icon -->
         <ImageView
             android:id="@+id/instructionsIcon"
             android:layout_width="24dp"
@@ -26,13 +28,24 @@
             android:src="@drawable/list_alt"
             app:tint="@color/orange_500" />
 
+        <!-- Title -->
         <TextView
             android:id="@+id/instructionsTitle"
-            style="@style/RecipeApp.Heading2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/instructions"
+            style="@style/RecipeApp.Heading2"
             android:textColor="@color/black" />
+
+        <!-- Chevron Icon -->
+        <ImageView
+            android:id="@+id/instructionsToggleIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/chevron_up"
+            app:tint="@color/black" />
+
     </LinearLayout>
 
     <!-- Instructions RecyclerView -->

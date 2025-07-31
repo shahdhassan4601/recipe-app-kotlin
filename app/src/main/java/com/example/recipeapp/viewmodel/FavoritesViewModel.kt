@@ -3,40 +3,43 @@ package com.example.recipeapp.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
-import com.example.recipeapp.data.local.RecipeDatabase
-import com.example.recipeapp.data.local.entities.RecipeEntity
+import com.example.recipeapp.data.local.AppDatabase
+import com.example.recipeapp.data.local.entities.FavoriteRecipeEntity
+import com.example.recipeapp.repository.FavoriteRepository
 import kotlinx.coroutines.launch
 
 class FavoriteViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val recipeDao = RecipeDatabase.getDatabase(application).recipeDao()
+    private val db = AppDatabase.getDatabase(application)
+    private val repository = FavoriteRepository(db)
 
-    val favoriteRecipes: LiveData<List<RecipeEntity>> = recipeDao.getAllFavoriteRecipes()
+    private val _userId = MutableLiveData<Int>()
 
-    fun addFavorite(recipe: RecipeEntity) {
+    val favoriteRecipes: LiveData<List<FavoriteRecipeEntity>> =
+        _userId.switchMap { userId ->
+            repository.getFavorites(userId)
+        }
+
+    fun setUserId(userId: Int) {
+        _userId.value = userId
+    }
+
+    fun addFavorite(recipe: FavoriteRecipeEntity) {
         viewModelScope.launch {
-            recipeDao.insertFavoriteRecipe(recipe)
+            repository.addFavorite(recipe)
         }
     }
 
-    fun removeFavorite(recipe: RecipeEntity) {
+    fun removeFavorite(recipe: FavoriteRecipeEntity) {
         viewModelScope.launch {
-            recipeDao.deleteFavoriteRecipe(recipe)
+            repository.removeFavorite(recipe)
         }
     }
 
-    fun removeFavoriteById(recipeId: String) {
-        viewModelScope.launch {
-            recipeDao.deleteFavoriteRecipeById(recipeId)
-        }
-    }
-
-    suspend fun isRecipeFavorite(recipeId: String): Boolean {
-        return recipeDao.isRecipeFavorite(recipeId)
-    }
-
-    suspend fun getFavoriteCount(): Int {
-        return recipeDao.getFavoriteCount()
+    suspend fun isFavorited(idMeal: String, userId: Int): Boolean {
+        return repository.isFavorited(idMeal, userId)
     }
 }

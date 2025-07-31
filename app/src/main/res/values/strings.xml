@@ -6,10 +6,11 @@
     <string name="favorite">Favorite</string>
     <string name="watch_video">Watch Video</string>
     <string name="recipe_image">Recipe image</string>
-    <string name="origin">Origin:</string>
-    <string name="category">Category:</string>
+    <string name="origin">Origin:  </string>
+    <string name="category">Category:  </string>
     <string name="ingredients_icon">ingredients</string>
     <string name="ingredients">Ingredients</string>
     <string name="instructions">Instructions</string>
     <string name="recipe_title">Recipe title</string>
+    <string name="toggle_icon">toggle icon</string>
 </resources>
