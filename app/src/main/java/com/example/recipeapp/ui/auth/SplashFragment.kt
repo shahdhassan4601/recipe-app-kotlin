@@ -37,9 +37,9 @@ class SplashFragment : Fragment() {
 
     private fun animateProgressBarAndNavigate() {
         lifecycleScope.launch {
-            for (i in 0..100) {
-                binding.loadingBar.progress = i+10
-                delay(20) // total of ~2 seconds
+            for (i in 0..100 step 2) { // step by 5 for faster updates
+                binding.loadingBar.progress = i
+                delay(20) // shorter delay
             }
 
             // Optionally pause or cancel the Lottie after progress finishes

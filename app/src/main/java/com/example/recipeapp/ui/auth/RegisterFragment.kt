@@ -81,6 +81,9 @@ class RegisterFragment : Fragment() {
                 }
             }
         }
+        binding.loginRedirectText.setOnClickListener {
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+        }
     }
 
     override fun onDestroyView() {

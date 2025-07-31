@@ -68,10 +68,14 @@
             android:id="@+id/emailInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="      Enter your username"
+            android:hint="Enter your username"
+            android:textColorHint="@color/secondary_text"
+            app:hintTextColor="@color/primary_orange"
+            app:boxStrokeColor="@color/primary_orange"
             android:paddingStart="24dp"
             android:paddingEnd="24dp"
-            app:startIconDrawable="@drawable/ic_email"
+            app:startIconDrawable="@drawable/ic_profile"
+            app:startIconTint="@color/secondary_text"
             app:boxCornerRadiusTopStart="12dp"
             app:boxCornerRadiusTopEnd="12dp"
             app:boxCornerRadiusBottomStart="12dp"
@@ -82,6 +86,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
+                android:backgroundTint="@color/background"
+                android:textColor="@color/charcoal_gray"
                 />
         </com.google.android.material.textfield.TextInputLayout>
         <TextView
@@ -99,10 +105,14 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="      Enter you password"
+            android:hint="Enter you password"
+            android:textColorHint="@color/secondary_text"
+            app:hintTextColor="@color/primary_orange"
+            app:boxStrokeColor="@color/primary_orange"
             app:startIconDrawable="@drawable/ic_lock"
+            app:startIconTint="@color/secondary_text"
             app:endIconMode="password_toggle"
-            android:paddingStart="24dp"
+            app:endIconTint="@color/secondary_text"            android:paddingStart="24dp"
             android:paddingEnd="24dp"
             app:boxCornerRadiusTopStart="12dp"
             app:boxCornerRadiusTopEnd="12dp"
@@ -113,6 +123,8 @@
                 android:id="@+id/passwordEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/background"
+                android:textColor="@color/charcoal_gray"
                 android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -155,21 +167,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Don't have an account?"
+                android:textColor="@color/secondary_text"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <Button
+            <TextView
                 android:id="@+id/registerRedirectText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" Register"
-                android:background="@android:color/transparent"
+                android:text="Register"
                 android:textColor="@color/orange_500"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:padding="0dp"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
+                android:paddingStart="3dp"
                 android:layout_marginStart="4dp" />
         </LinearLayout>
 
