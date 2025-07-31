@@ -7,7 +7,6 @@ import com.example.recipeapp.data.local.entities.RecipeEntity
 
 @Dao
 interface RecipeDAO {
-
     @Query("SELECT * FROM favorite_recipes ORDER BY dateAdded DESC")
     fun getAllFavoriteRecipes(): LiveData<List<RecipeEntity>>
 
