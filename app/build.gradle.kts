@@ -90,5 +90,7 @@ dependencies {
     implementation("androidx.compose.material:material-icons-core:1.6.7")
     implementation("androidx.fragment:fragment-ktx:1.7.0")
 
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
 
 }

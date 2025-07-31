@@ -1,7 +1,5 @@
 package com.example.recipeapp.ui.favorites
 
-
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +12,6 @@ import com.example.recipeapp.R
 import com.example.recipeapp.adapters.FavoriteAdapter
 import com.example.recipeapp.databinding.FragmentFavoriteBinding
 import com.example.recipeapp.viewmodel.FavoriteViewModel
-
 
 class FavoriteFragment : Fragment() {
 
@@ -36,6 +33,11 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val userId = SharedPrefsHelper.getUserId(requireContext())
+        if (userId != -1) {
+            favoriteViewModel.setUserId(userId)
+        }
+
         setupRecyclerView()
         observeFavoriteRecipes()
     }
@@ -43,7 +45,6 @@ class FavoriteFragment : Fragment() {
     private fun setupRecyclerView() {
         favoriteAdapter = FavoriteAdapter(
             onItemClick = { recipe ->
-                // Navigate to recipe detail
                 val bundle = Bundle().apply {
                     putString("recipeId", recipe.idMeal)
                 }
