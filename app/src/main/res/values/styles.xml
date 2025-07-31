@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="RecipeApp" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="tRecipeApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize as needed -->
         <item name="colorPrimary">@color/primary_orange</item>
         <item name="colorSecondary">@color/fresh_green</item>

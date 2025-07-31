@@ -7,15 +7,12 @@
     <!-- Recipe App Colors from your Figma design -->
     <color name="PrimaryOrange">#FFA726</color>
     <color name="Orange500">#F97316</color>
-    <color name="fresh_green">#66BB6A</color>
     <color name="light_gray_borders">#E0E0E0</color>
     <color name="warm_white_background">#FFF8F2</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
     <!-- Recipe App Colors -->
-    <color name="primary_orange">#FFA726</color>
-    <color name="orange_500">#F97316</color>
     <color name="light_gray_border">#E0E0E0</color>
     <color name="warm_white">#FFF8F2</color>
     <color name="charcoal_gray">#333333</color>

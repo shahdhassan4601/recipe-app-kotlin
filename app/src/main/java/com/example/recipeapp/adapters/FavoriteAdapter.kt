@@ -1,7 +1,5 @@
 package com.example.recipeapp.adapters
 
-
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,14 +7,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recipeapp.R
-import com.example.recipeapp.data.local.entities.RecipeEntity
+import com.example.recipeapp.data.local.entities.FavoriteRecipeEntity
 import com.example.recipeapp.databinding.ItemFavoriteRecipeBinding
 
-
 class FavoriteAdapter(
-    private val onItemClick: (RecipeEntity) -> Unit,
-    private val onRemoveClick: (RecipeEntity) -> Unit
-) : ListAdapter<RecipeEntity, FavoriteAdapter.FavoriteViewHolder>(DiffCallback()) {
+    private val onItemClick: (FavoriteRecipeEntity) -> Unit,
+    private val onRemoveClick: (FavoriteRecipeEntity) -> Unit
+) : ListAdapter<FavoriteRecipeEntity, FavoriteAdapter.FavoriteViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         val binding = ItemFavoriteRecipeBinding.inflate(
@@ -33,20 +30,14 @@ class FavoriteAdapter(
         private val binding: ItemFavoriteRecipeBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(recipe: RecipeEntity) {
+        fun bind(recipe: FavoriteRecipeEntity) {
             binding.apply {
-                textViewRecipeName.text = recipe.strMeal
-                textViewCategory.text = recipe.strCategory ?: "Unknown Category"
-                textViewArea.text = recipe.strArea ?: "Unknown Area"
-
-//                // Show ingredients count
-//                val ingredientsCount = recipe.getIngredientsCount()
-//                textViewIngredientsCount.text = "$ingredientsCount ingredients"
+                textViewRecipeName.text = recipe.mealName
+                textViewCategory.text = recipe.category ?: "Unknown Category"
 
                 Glide.with(imageViewRecipe.context)
-                    .load(recipe.strMealThumb)
+                    .load(recipe.mealThumb)
                     .placeholder(R.drawable.placeholder_recipe)
-//                    .error(R.drawable.error_recipe)
                     .into(imageViewRecipe)
 
                 root.setOnClickListener {
@@ -60,13 +51,15 @@ class FavoriteAdapter(
         }
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<RecipeEntity>() {
-        override fun areItemsTheSame(oldItem: RecipeEntity, newItem: RecipeEntity): Boolean {
-            return oldItem.idMeal == newItem.idMeal
-        }
+    class DiffCallback : DiffUtil.ItemCallback<FavoriteRecipeEntity>() {
+        override fun areItemsTheSame(
+            oldItem: FavoriteRecipeEntity,
+            newItem: FavoriteRecipeEntity
+        ): Boolean = oldItem.idMeal == newItem.idMeal && oldItem.userId == newItem.userId
 
-        override fun areContentsTheSame(oldItem: RecipeEntity, newItem: RecipeEntity): Boolean {
-            return oldItem == newItem
-        }
+        override fun areContentsTheSame(
+            oldItem: FavoriteRecipeEntity,
+            newItem: FavoriteRecipeEntity
+        ): Boolean = oldItem == newItem
     }
 }

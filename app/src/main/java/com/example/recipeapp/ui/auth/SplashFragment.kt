@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.airbnb.lottie.LottieAnimationView
 import com.example.recipeapp.databinding.FragmentSplashBinding
-import com.example.recipeapp.data.prefs.SharedPrefsHelper
 import com.example.recipeapp.ui.main.RecipeActivity
 import com.example.recipeapp.R
 import androidx.navigation.fragment.findNavController
