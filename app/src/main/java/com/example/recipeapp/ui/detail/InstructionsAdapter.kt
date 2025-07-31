@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipeapp.R
 
-class InstructionsAdapter(private val steps: List<InstructionStep>) :
+class InstructionsAdapter(private var steps: List<InstructionStep>) :
     RecyclerView.Adapter<InstructionsAdapter.InstructionViewHolder>() {
 
     inner class InstructionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -23,8 +23,13 @@ class InstructionsAdapter(private val steps: List<InstructionStep>) :
 
     override fun onBindViewHolder(holder: InstructionViewHolder, position: Int) {
         val step = steps[position]
-        holder.tvStepNumber.text = "${position + 1}."
+        holder.tvStepNumber.text = "${position + 1}"
         holder.tvInstructionText.text = step.step.trim()
+    }
+
+    fun updateList(newList: List<InstructionStep>) {
+        this.steps = newList
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int = steps.size
