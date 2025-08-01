@@ -16,15 +16,11 @@ class FavoriteViewModel(application: Application) : AndroidViewModel(application
     private val db = AppDatabase.getDatabase(application)
     private val repository = FavoriteRepository(db)
 
-    private val _userId = MutableLiveData<Int>()
+    private val _isFavorited = MutableLiveData<Boolean>()
+    val isFavorited: LiveData<Boolean> get() = _isFavorited
 
-    val favoriteRecipes: LiveData<List<FavoriteRecipeEntity>> =
-        _userId.switchMap { userId ->
-            repository.getFavorites(userId)
-        }
-
-    fun setUserId(userId: Int) {
-        _userId.value = userId
+    fun getFavorites(userId: Int): LiveData<List<FavoriteRecipeEntity>> {
+        return repository.getFavorites(userId)
     }
 
     fun addFavorite(recipe: FavoriteRecipeEntity) {
@@ -39,7 +35,20 @@ class FavoriteViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
+    fun removeFavoriteById(idMeal: String, userId: Int) {
+        viewModelScope.launch {
+            repository.removeFavoriteById(idMeal, userId)
+        }
+    }
+
     suspend fun isFavorited(idMeal: String, userId: Int): Boolean {
         return repository.isFavorited(idMeal, userId)
+    }
+
+    fun checkIfFavorited(idMeal: String, userId: Int) {
+        viewModelScope.launch {
+            val result = repository.isFavorited(idMeal, userId)
+            _isFavorited.postValue(result)
+        }
     }
 }

@@ -18,6 +18,10 @@ class FavoriteRepository(private val db: AppDatabase) {
         db.favoriteDao().removeFromFavorites(recipe)
     }
 
+    suspend fun removeFavoriteById(idMeal: String, userId: Int) {
+        db.favoriteDao().deleteById(idMeal, userId)
+    }
+
     suspend fun isFavorited(idMeal: String, userId: Int): Boolean {
         return db.favoriteDao().isRecipeFavorited(idMeal, userId)
     }

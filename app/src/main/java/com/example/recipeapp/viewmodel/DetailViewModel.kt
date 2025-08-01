@@ -14,6 +14,9 @@ class DetailViewModel(private val repository: RecipeRepository) : ViewModel() {
     private val _mealDetail = MutableLiveData<DetailedMeal?>()
     val mealDetail: LiveData<DetailedMeal?> get() = _mealDetail
 
+    private val _error = MutableLiveData<String?>()
+    val error: LiveData<String?> get() = _error
+
     fun fetchMealDetail(id: String) {
         viewModelScope.launch {
             val result = repository.getRecipeDetails(id)

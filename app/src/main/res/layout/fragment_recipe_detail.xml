@@ -101,6 +101,15 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/errorText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:textColor="@color/youtube_red"
+            android:gravity="center"
+            android:layout_below="@id/recipeTitle"/>
+
         <include
             layout="@layout/video_overlay"
             android:id="@+id/video_overlay_include"/>

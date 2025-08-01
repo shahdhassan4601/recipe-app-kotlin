@@ -13,6 +13,9 @@ interface FavoriteDAO {
     @Delete
     suspend fun removeFromFavorites(recipe: FavoriteRecipeEntity)
 
+    @Query("DELETE FROM favorites WHERE idMeal = :idMeal AND userId = :userId")
+    suspend fun deleteById(idMeal: String, userId: Int)
+
     @Query("SELECT * FROM favorites WHERE userId = :userId")
     fun getFavoritesByUserId(userId: Int): LiveData<List<FavoriteRecipeEntity>>
 
