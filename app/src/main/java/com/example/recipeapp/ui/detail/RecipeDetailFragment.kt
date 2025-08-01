@@ -72,17 +72,10 @@ class RecipeDetailFragment : Fragment() {
     private fun initializeViews() {
         youtubePlayerView = binding.videoOverlayInclude.youtubePlayerView
         lifecycle.addObserver(youtubePlayerView)
-        // Setup logic
-        val repository = RepositoryProvider.provideRecipeRepository()
-        val factory = DetailViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
+
         setupViews()
         setupCollapsibleSections()
         setupRecyclerViews()
-
-        val recipeId = args.recipeId
-        viewModel.fetchMealDetail(recipeId)
-        observeViewModel()
     }
 
     /**
