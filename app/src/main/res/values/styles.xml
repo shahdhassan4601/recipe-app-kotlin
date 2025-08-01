@@ -50,4 +50,21 @@
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:lineSpacingMultiplier">1.5</item>
     </style>
+
+    <style name="CategoryButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">@color/category_button_text_color</item>
+        <item name="android:backgroundTint">@color/category_button_background</item>
+        <item name="strokeColor">@color/category_button_stroke_color</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="cornerRadius">20dp</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
 </resources>

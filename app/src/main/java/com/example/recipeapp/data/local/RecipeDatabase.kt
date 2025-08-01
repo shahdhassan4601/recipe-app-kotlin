@@ -19,6 +19,7 @@ abstract class RecipeDatabase : RoomDatabase() {
     abstract fun recipeDao(): RecipeDAO
     abstract fun userDao(): UserDAO
 
+
     companion object {
         @Volatile
         private var INSTANCE: RecipeDatabase? = null

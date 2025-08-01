@@ -39,7 +39,7 @@ class RecipeSearchAdapter(
         private val timeTextView: TextView = itemView.findViewById(R.id.timeTextView)
         private val ratingTextView: TextView = itemView.findViewById(R.id.ratingTextView)
         private val difficultyTextView: TextView = itemView.findViewById(R.id.difficultyTextView)
-        private val favoriteIcon: ImageView = itemView.findViewById(R.id.favoriteIcon)
+
 
         fun bind(meal: Meal, onItemClick: (Meal) -> Unit) {
             recipeNameTextView.text = meal.strMeal
@@ -64,10 +64,7 @@ class RecipeSearchAdapter(
                 "Hard" -> difficultyTextView.setBackgroundResource(R.drawable.difficulty_background_hard)
             }
 
-            favoriteIcon.setOnClickListener {
-                // TODO: Implement favorite toggle logic
-                // This will be handled by your teammates working on the favorites feature
-            }
+
 
             itemView.setOnClickListener {
                 onItemClick(meal)

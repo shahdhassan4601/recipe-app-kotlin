@@ -4,105 +4,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardBackgroundColor="@color/card_background"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="6dp">
+    android:layout_margin="16dp"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="10dp"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/white">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Recipe Image -->
         <ImageView
             android:id="@+id/recipeImageView"
-            android:layout_width="0dp"
-            android:layout_height="140dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
             android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+            android:clipToOutline="true"
+            android:background="@drawable/rounded_top_image"
+            android:contentDescription="Recipe image" />
 
-        <TextView
-            android:id="@+id/recipeNameTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="12dp"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recipeImageView"
-            tools:text="Delicious Recipe Name" />
+        <!-- Transparent Gradient -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/transparent" />
 
-        <TextView
-            android:id="@+id/recipeDescriptionTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="12dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:textColor="@color/secondaryTextColor"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recipeNameTextView"
-            tools:text="A brief description of the recipe, highlighting its key features and taste." />
+        <!-- Favorite Button -->
+        <ImageButton
+            android:id="@+id/favoriteButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="12dp"
+            android:layout_gravity="top|end"
+            android:background="@drawable/favorite_button_bg"
+            android:padding="8dp"
+            android:src="@drawable/ic_favorite"
+            app:tint="@color/icon_tint" />
 
+        <!-- Info Section -->
         <LinearLayout
-            android:id="@+id/infoLayout"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="12dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recipeDescriptionTextView">
-
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:src="@drawable/ic_time"
-                app:tint="@color/icon_tint" />
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_bottom_white"
+            android:padding="16dp"
+            android:layout_marginTop="180dp">
 
             <TextView
-                android:id="@+id/timeTextView"
-                android:layout_width="wrap_content"
+                android:id="@+id/recipeNameTextView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:textColor="@color/secondaryTextColor"
-                android:textSize="12sp"
-                tools:text="30 min" />
-
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginStart="12dp"
-                android:src="@drawable/ic_serving"
-                app:tint="@color/icon_tint" />
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/primaryTextColor"
+                android:maxLines="2"
+                android:ellipsize="end"
+                tools:text="Creamy Mushroom Risotto" />
 
             <TextView
-                android:id="@+id/servingsTextView"
-                android:layout_width="wrap_content"
+                android:id="@+id/recipeDescriptionTextView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:textSize="14sp"
                 android:textColor="@color/secondaryTextColor"
-                android:textSize="12sp"
-                tools:text="4 servings" />
+                android:maxLines="2"
+                android:ellipsize="end"
+                tools:text="Delicious creamy risotto with parmesan" />
 
+            <LinearLayout
+                android:id="@+id/infoLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_time"
+                    app:tint="@color/icon_tint" />
+
+                <TextView
+                    android:id="@+id/timeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textSize="12sp"
+                    tools:text="35 min" />
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="12dp"
+                    android:src="@drawable/ic_serving"
+                    app:tint="@color/icon_tint" />
+
+                <TextView
+                    android:id="@+id/servingsTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textSize="12sp"
+                    tools:text="4 servings" />
+            </LinearLayout>
         </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 </com.google.android.material.card.MaterialCardView>
