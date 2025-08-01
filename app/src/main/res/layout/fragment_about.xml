@@ -1,14 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.about.AboutFragment">
+    android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
 
-</FrameLayout>
+        <!-- App Icon -->
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/chef_hat"
+            android:contentDescription="App Icon"
+            android:padding="8dp"
+            android:background="@drawable/logo_container_background"/>
+
+        <!-- App Name -->
+        <TextView
+            android:layout_marginTop="8dp"
+            android:text="Recipe App"
+            android:textSize="18sp"
+            style="@style/RecipeApp.Heading1"
+            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- App Description -->
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Your personal culinary companion for discovering, creating, and sharing amazing recipes. RecipeApp brings together thousands of delicious recipes with smart features to make cooking accessible and enjoyable for everyone."
+            android:textSize="14sp"
+            android:paddingHorizontal="15dp"/>
+
+        <!-- Section: Our Team -->
+        <TextView
+            android:layout_marginTop="24dp"
+            android:text="Meet Our Team"
+            style="@style/RecipeApp.Heading2"
+            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- Team Grid -->
+        <GridLayout
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:alignmentMode="alignMargins"
+            android:columnOrderPreserved="false"
+            android:useDefaultMargins="true">
+
+            <!-- Team Member Card -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:gravity="center"
+                android:background="@drawable/rounded_card">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/mickey"
+                    android:contentDescription="Sarah"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/circle_background" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Israa Mostafa"
+                    android:textStyle="bold"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="API Owner and Home/Search Developer	"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    android:paddingHorizontal="4dp"
+                    android:textColor="@color/secondaryTextColor" />            </LinearLayout>
+            <!-- Example Team Member -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:gravity="center"
+                android:background="@drawable/rounded_card">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/tom"
+                    android:contentDescription="Sarah"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/circle_background" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                        android:text="Shahd Hassan"
+                    android:textStyle="bold"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GitHub Lead and Auth System Owner"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    android:paddingHorizontal="4dp"
+                    android:textColor="@color/secondaryTextColor" />
+            </LinearLayout>
+            <!-- Example Team Member -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:gravity="center"
+                android:background="@drawable/rounded_card">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/spongepop"
+                    android:contentDescription="Sarah"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/circle_background" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Ghada Essam"
+                    android:textStyle="bold"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Integration Lead and Detail/About Developer"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    android:paddingHorizontal="4dp"
+                    android:textColor="@color/secondaryTextColor" />
+            </LinearLayout>
+            <!-- Example Team Member -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:gravity="center"
+                android:background="@drawable/rounded_card">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/kitty"
+                    android:contentDescription="Sarah"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/circle_background" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Ola Ragab"
+                    android:textStyle="bold"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Room DB Specialist and Favorites Developer"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    android:paddingHorizontal="4dp"
+                    android:textColor="@color/secondaryTextColor" />            </LinearLayout>
+
+        </GridLayout>
+    </LinearLayout>
+</ScrollView>
