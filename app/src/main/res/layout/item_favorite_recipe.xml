@@ -78,15 +78,19 @@
         </LinearLayout>
 
         <!-- زر الحذف -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonRemove"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Remove"
             android:textSize="12sp"
             android:layout_gravity="center_vertical"
-            android:backgroundTint="@color/tomato_red"
-            style="@style/Widget.MaterialComponents.Button.TextButton" />
+            app:backgroundTint="@color/warm_orange_red"
+            app:iconTint="@color/white"
+            app:iconGravity="textStart"
+            app:cornerRadius="20dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            style="@style/Widget.Material3.Button.UnelevatedButton" />
 
     </LinearLayout>
 

@@ -18,6 +18,13 @@
     <color name="charcoal_gray">#333333</color>
     <color name="tomato_red">#EF5350</color>
     <color name="youtube_red">#FF0000</color>
+    <color name="soft_pink">#FFE4E6</color>
+    <color name="deep_red">#DC2626</color>
+    <color name="rose_gold">#E91E63</color>
+    <color name="gentle_red">#F87171</color>
+    <color name="warm_coral">#FF6B6B</color>
+    <color name="warm_orange_red">#FF5722</color>  <!-- Perfect for remove button -->
+
 
     <!-- Additional UI Colors -->
     <color name="search_background">#F5F5F5</color>
