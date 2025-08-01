@@ -31,15 +31,10 @@ class FavoriteFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         val userId = SharedPrefsHelper.getUserId(requireContext())
-        if (userId != -1) {
-            favoriteViewModel.setUserId(userId)
-        }
 
         setupRecyclerView()
-        observeFavoriteRecipes()
+        observeFavoriteRecipes(userId)
     }
 
     private fun setupRecyclerView() {
@@ -61,8 +56,8 @@ class FavoriteFragment : Fragment() {
         }
     }
 
-    private fun observeFavoriteRecipes() {
-        favoriteViewModel.favoriteRecipes.observe(viewLifecycleOwner) { recipes ->
+    private fun observeFavoriteRecipes(userId: Int) {
+        favoriteViewModel.getFavorites(userId).observe(viewLifecycleOwner) { recipes ->
             if (recipes.isEmpty()) {
                 binding.textViewEmpty.visibility = View.VISIBLE
                 binding.recyclerViewFavorites.visibility = View.GONE
