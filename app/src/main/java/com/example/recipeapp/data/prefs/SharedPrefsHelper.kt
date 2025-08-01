@@ -24,9 +24,11 @@ object SharedPrefsHelper {
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         return prefs.getInt(KEY_USER_ID, -1) // -1 means not found
     }
-
     fun logout(context: Context) {
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        prefs.edit().clear().apply()
+        prefs.edit()
+            .putBoolean(KEY_LOGGED_IN, false)  // This is critical!
+            .remove(KEY_USER_ID)
+            .apply()
     }
 }
