@@ -3,12 +3,12 @@ package com.example.recipeapp.ui.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recipeapp.R
 import com.example.recipeapp.data.remote.model.Meal
+
 class RecipeAdapter(
     private var recipes: List<Meal>,
     private val onItemClick: (Meal) -> Unit
@@ -21,7 +21,7 @@ class RecipeAdapter(
     }
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
-        holder.bind(recipes[position], onItemClick)
+        holder.bind(recipes[position])
     }
 
     override fun getItemCount(): Int = recipes.size
@@ -31,15 +31,26 @@ class RecipeAdapter(
         notifyDataSetChanged()
     }
 
-    class RecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class RecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val recipeImageView: ImageView = itemView.findViewById(R.id.recipeImageView)
         private val recipeNameTextView: TextView = itemView.findViewById(R.id.recipeNameTextView)
         private val recipeDescriptionTextView: TextView = itemView.findViewById(R.id.recipeDescriptionTextView)
         private val timeTextView: TextView = itemView.findViewById(R.id.timeTextView)
         private val servingsTextView: TextView = itemView.findViewById(R.id.servingsTextView)
+        private val favoriteButton: ImageButton = itemView.findViewById(R.id.favoriteButton)
 
-        fun bind(meal: Meal, onItemClick: (Meal) -> Unit) {
+        private var isFavorited = false
+
+        fun bind(meal: Meal) {
+            // Bind data
             recipeNameTextView.text = meal.strMeal
+            recipeDescriptionTextView.text = "A delightful recipe of \"${meal.strMeal}\". Simple and delicious!"
+
+            // Random dummy data
+            timeTextView.text = "${(20..45).random()} min"
+            servingsTextView.text = "${(2..5).random()} servings"
+
+            // Load image
             Glide.with(itemView.context)
                 .load(meal.strMealThumb)
                 .centerCrop()
@@ -47,15 +58,27 @@ class RecipeAdapter(
                 .error(R.drawable.placeholder_recipe)
                 .into(recipeImageView)
 
-            // Placeholder data for description, time, and servings
-            // Similar to search, these might need to come from a more detailed API or be added to your Meal model
-            recipeDescriptionTextView.text = "A delightful recipe for \"${meal.strMeal}\" that is easy to prepare."
-            timeTextView.text = "${(20..50).random()} min" // Random time for now
-            servingsTextView.text = "${(2..6).random()} servings" // Random servings for now
+            // Favorite button logic
+            favoriteButton.setOnClickListener {
+                isFavorited = !isFavorited
+                if (isFavorited) {
+                    favoriteButton.setImageResource(R.drawable.favorite_filled)
+                    favoriteButton.setColorFilter(itemView.context.getColor(R.color.tomato_red))
+                    favoriteButton.animate().scaleX(1.2f).scaleY(1.2f).setDuration(150).withEndAction {
+                        favoriteButton.animate().scaleX(1f).scaleY(1f).duration = 100
+                    }
+                } else {
+                    favoriteButton.setImageResource(R.drawable.ic_favorite)
+                    favoriteButton.setColorFilter(itemView.context.getColor(R.color.icon_tint))
+                }
+            }
 
+            // Click to open details
             itemView.setOnClickListener {
                 onItemClick(meal)
             }
         }
+
     }
+
 }

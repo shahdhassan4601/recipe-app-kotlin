@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipeapp.R
 import com.example.recipeapp.data.remote.api.RetrofitClient
@@ -45,7 +47,7 @@ class HomeFragment : Fragment( ) {
             val action = HomeFragmentDirections.actionHomeFragmentToRecipeDetailFragment(meal.idMeal)
             findNavController().navigate(action)
         }
-        recyclerView.layoutManager = GridLayoutManager(context, 2) // 2 columns
+        recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = recipeAdapter
 
         viewModel.recipes.observe(viewLifecycleOwner) { recipes ->

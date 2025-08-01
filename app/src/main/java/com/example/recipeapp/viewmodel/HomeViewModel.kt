@@ -26,4 +26,5 @@ class HomeViewModel(private val repository: RecipeRepository) : ViewModel() {
             _isLoading.value = false
         }
     }
+
 }
