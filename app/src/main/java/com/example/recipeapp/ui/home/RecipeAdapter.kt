@@ -37,9 +37,9 @@ class RecipeAdapter(
         private val recipeDescriptionTextView: TextView = itemView.findViewById(R.id.recipeDescriptionTextView)
         private val timeTextView: TextView = itemView.findViewById(R.id.timeTextView)
         private val servingsTextView: TextView = itemView.findViewById(R.id.servingsTextView)
-        private val favoriteButton: ImageButton = itemView.findViewById(R.id.favoriteButton)
 
-        private var isFavorited = false
+
+
 
         fun bind(meal: Meal) {
             // Bind data
@@ -58,20 +58,7 @@ class RecipeAdapter(
                 .error(R.drawable.placeholder_recipe)
                 .into(recipeImageView)
 
-            // Favorite button logic
-            favoriteButton.setOnClickListener {
-                isFavorited = !isFavorited
-                if (isFavorited) {
-                    favoriteButton.setImageResource(R.drawable.favorite_filled)
-                    favoriteButton.setColorFilter(itemView.context.getColor(R.color.tomato_red))
-                    favoriteButton.animate().scaleX(1.2f).scaleY(1.2f).setDuration(150).withEndAction {
-                        favoriteButton.animate().scaleX(1f).scaleY(1f).duration = 100
-                    }
-                } else {
-                    favoriteButton.setImageResource(R.drawable.ic_favorite)
-                    favoriteButton.setColorFilter(itemView.context.getColor(R.color.icon_tint))
-                }
-            }
+
 
             // Click to open details
             itemView.setOnClickListener {
