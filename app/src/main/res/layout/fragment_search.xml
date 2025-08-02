@@ -133,15 +133,15 @@
 
 
                 <!-- عنوان البحث الحديث -->
-                <TextView
-                    android:id="@+id/recentSearchesTitleTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Recently Searched"
-                    android:textColor="@color/charcoal_gray"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="12dp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/recentSearchesTitleTextView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Frequently Searched"-->
+<!--                    android:textColor="@color/charcoal_gray"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:layout_marginBottom="12dp" />-->
 
 
 
