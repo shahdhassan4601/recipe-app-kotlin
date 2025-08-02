@@ -41,8 +41,14 @@ class HomeFragment : Fragment( ) {
 
         toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.action_settings -> {
-                    findNavController().navigate(R.id.action_homeFragment_to_aboutFragment)
+                R.id.action_about -> {
+                    findNavController().navigate(
+                        R.id.aboutFragment,
+                        null,
+                        NavOptions.Builder()
+                            .setPopUpTo(R.id.main_nav_graph, false)  // Replace 'nav_graph' with your graph's root ID
+                            .build()
+                    )
                     true
                 }
                 R.id.action_logout -> {
