@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
@@ -27,6 +26,11 @@ class SearchFragment : Fragment() {
     private lateinit var searchAdapter: RecipeSearchAdapter
     private lateinit var categoryButtons: List<Button>
 
+    private lateinit var btnAll: Button
+    private lateinit var btnBeef: Button
+    private lateinit var btnChicken: Button
+    private lateinit var btnSeafood: Button
+    private lateinit var btnVegan: Button
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,6 +48,15 @@ class SearchFragment : Fragment() {
         val searchEditText: EditText = view.findViewById(R.id.searchEditText)
         val searchResultsRecyclerView: RecyclerView = view.findViewById(R.id.searchResultsRecyclerView)
         val searchProgressBar: ProgressBar = view.findViewById(R.id.searchProgressBar)
+
+        // Initialize buttons
+        btnAll = view.findViewById(R.id.btnAll)
+        btnBeef = view.findViewById(R.id.btnBeef)
+        btnChicken = view.findViewById(R.id.btnChicken)
+        btnSeafood = view.findViewById(R.id.btnSeafood)
+        btnVegan = view.findViewById(R.id.btnVegan)
+
+        categoryButtons = listOf(btnAll, btnBeef, btnChicken, btnSeafood, btnVegan)
 
         searchAdapter = RecipeSearchAdapter(emptyList()) { meal ->
             val action = SearchFragmentDirections.actionSearchFragmentToRecipeDetailFragment(meal.idMeal ?: "")
@@ -65,44 +78,40 @@ class SearchFragment : Fragment() {
             viewModel.searchRecipes(text.toString())
         }
 
-        val btnAll = view.findViewById<Button>(R.id.btnAll)
-        val btnBeef = view.findViewById<Button>(R.id.btnBeef)
-        val btnChicken = view.findViewById<Button>(R.id.btnChicken)
-        val btnSeafood = view.findViewById<Button>(R.id.btnSeafood)
-
-        val btnVegan = view.findViewById<Button>(R.id.btnVegan)
-
-        categoryButtons = listOf(btnAll, btnBeef, btnChicken, btnSeafood, btnVegan)
-
-        fun highlightSelectedButton(selectedButton: Button) {
-            categoryButtons.forEach { button ->
-                if (button == selectedButton) {
-                    button.setBackgroundResource(R.drawable.category_button_selected)
-                    button.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
-                } else {
-                    button.setBackgroundResource(R.drawable.category_button_unselected)
-                    button.setTextColor(ContextCompat.getColor(requireContext(), R.color.primaryColor))
-                }
-            }
-        }
-
-        fun setupCategoryButton(button: Button, category: String?) {
-            button.setOnClickListener {
-                animateButton(button)
-                highlightSelectedButton(button)
-                if (category.isNullOrEmpty()) {
-                    viewModel.searchRecipes("")
-                } else {
-                    viewModel.searchRecipes(category)
-                }
-            }
-        }
-
+        // Set up category buttons
         setupCategoryButton(btnAll, "")
         setupCategoryButton(btnBeef, "Beef")
         setupCategoryButton(btnChicken, "Chicken")
         setupCategoryButton(btnSeafood, "Seafood")
         setupCategoryButton(btnVegan, "Vegan")
+
+        // 🟢 Load default recipes on first open (All category)
+        viewModel.searchRecipes("")
+        highlightSelectedButton(btnAll)
+    }
+
+    private fun setupCategoryButton(button: Button, category: String?) {
+        button.setOnClickListener {
+            animateButton(button)
+            highlightSelectedButton(button)
+            if (category.isNullOrEmpty()) {
+                viewModel.searchRecipes("")
+            } else {
+                viewModel.searchRecipes(category)
+            }
+        }
+    }
+
+    private fun highlightSelectedButton(selectedButton: Button) {
+        categoryButtons.forEach { button ->
+            if (button == selectedButton) {
+                button.setBackgroundResource(R.drawable.category_button_selected)
+                button.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+            } else {
+                button.setBackgroundResource(R.drawable.category_button_unselected)
+                button.setTextColor(ContextCompat.getColor(requireContext(), R.color.primaryColor))
+            }
+        }
     }
 
     private fun animateButton(button: View) {
